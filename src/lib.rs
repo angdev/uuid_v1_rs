@@ -53,6 +53,10 @@ impl Uuid {
                 (&self.0[12..16]).read_u32::<BigEndian>().unwrap())
     }
 
+    pub fn as_bytes(&self) -> &[u8] {
+        &(self.0)
+    }
+
     fn set_version(&mut self, v: u8) {
         self.0[6] = (self.0[6] & 0xF) | ((v as u8) << 4);
     }
