@@ -1,13 +1,9 @@
-#![feature(test)]
-
 extern crate byteorder;
 extern crate chrono;
 extern crate interfaces;
 #[macro_use]
 extern crate lazy_static;
 extern crate rand;
-extern crate test;
-extern crate uuid;
 
 use std::default::Default;
 use std::sync::Mutex;
@@ -164,15 +160,4 @@ pub fn new_v1() -> Uuid {
     uuid.set_version(1);
 
     uuid
-}
-
-#[cfg(test)]
-mod tests {
-    use super::new_v1;
-    use test::Bencher;
-
-    #[bench]
-    fn bench_new_v1(b: &mut Bencher) {
-        b.iter(|| new_v1());
-    }
 }
