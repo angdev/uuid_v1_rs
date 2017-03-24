@@ -9,6 +9,4 @@ uuid = "0.4"
 rand = "0.3"
 byteorder = "1"
 chrono = "0.3.0"
-
-[dependencies.interfaces]
-git = "https://github.com/andrew-d/interfaces-rs.git"
+interfaces = "0.0.1"

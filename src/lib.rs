@@ -109,18 +109,21 @@ fn init_clock_seq() -> u16 {
 }
 
 fn init_hardware_addr(mut buffer: &mut [u8]) {
-    let result =
-        match Interface::get_all() {
-            Ok(interfaces) => {
-            interfaces.iter()
-                .map(|ref i| i.hardware_addr().unwrap())
-                .find(|addr| addr.as_bytes().len() >= 6)
-        }
-            Err(_) => None,
-        };
+    use std::u8;
+
+    let result = match Interface::get_all() {
+        Ok(interfaces) => interfaces.first().and_then(|i| i.hardware_addr().ok()),
+        Err(_) => None,
+    };
 
     match result {
-        Some(addr) => copy_memory(&mut buffer, addr.as_bytes()),
+        Some(addr) => {
+            let addr_bytes: Vec<u8> = addr.as_string()
+                .split(":")
+                .map(|hex| u8::from_str_radix(hex, 16).unwrap())
+                .collect();
+            copy_memory(&mut buffer, addr_bytes.as_slice())
+        }
         None => rand::thread_rng().fill_bytes(&mut buffer),
     }
 }
