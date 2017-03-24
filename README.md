@@ -5,8 +5,6 @@
 **uuid_v1** provides Rust implementation of Universally Unique Identifier (UUID) Version 1.
 Implementation inspired by [satori/go.uuid](https://github.com/satori/go.uuid), [rust-lang-nursely/uuid](https://github.com/rust-lang-nursery/uuid)
 
-Hyphenated string conversion is only supported currently.
-
 [Documentation](https://docs.rs/uuid_v1)
 
 ## Example
