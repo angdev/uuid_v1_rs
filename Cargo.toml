@@ -2,6 +2,8 @@
 name = "uuid_v1"
 version = "0.1.0"
 authors = ["Hong ChulJu <ang0123dev@gmail.com>"]
+description = "UUID Version 1 implementation written in Rust"
+license = "MIT"
 
 [dependencies]
 lazy_static = "0.2.4"
